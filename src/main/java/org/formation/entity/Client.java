@@ -1,16 +1,28 @@
  package org.formation.entity;
 
+import org.hibernate.annotations.FilterJoinTable;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 
 @Entity
+
 public class Client extends Personne  {
 	
 	private String telephone;
 	
 	@Embedded
 	private Adresse adresse;
+//	@OneToOne
+//	@FilterJoinTable(name = "")
+//	@JoinColumn(name = "numCompteCourant")
+	private CompteCourant cc;
+//	private CompteEpargne ce;
 	
 	public Client() {}
 
@@ -18,10 +30,22 @@ public class Client extends Personne  {
 	    this.adresse = adresse;
 	}
 	
+	
 	public Client(String nom, String prenom, String telephone, Adresse adresse) {
 		super(nom,prenom);
 		this.telephone = telephone;
 		this.adresse = adresse;
+		this.cc= new CompteCourant();
+		
+	}
+	
+
+	public CompteCourant getCc() {
+		return cc;
+	}
+
+	public void setCc(CompteCourant cc) {
+		this.cc = cc;
 	}
 
 	public String getTelephone() {
