@@ -10,16 +10,21 @@ import jakarta.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Personne {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
 
 	private String nom = "";
 
 	private String prenom = "";
 
 	public Personne() {
+	}
+
+	public Personne(String nom) {
+		super();
+		this.nom = nom;
 	}
 
 	public Personne(String nom, String prenom) {

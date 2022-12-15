@@ -7,64 +7,47 @@ import jakarta.persistence.Entity;
 @Entity
 public class Client extends Personne  {
 	
-	private String login;
-	
-	private String motDePasse;
+	private String telephone;
 	
 	@Embedded
 	private Adresse adresse;
 	
-
 	public Client() {}
 
 	public Client(Adresse adresse) {
 	    this.adresse = adresse;
 	}
 	
-
-	public Client(String nom, String prenom, String login, String motDePasse, Adresse adresse) {
+	public Client(String nom, String prenom, String telephone, Adresse adresse) {
 		super(nom,prenom);
-		this.login = login;
-		this.motDePasse = motDePasse;
+		this.telephone = telephone;
 		this.adresse = adresse;
 	}
 
-	public String toString() {
-		 return " ID  : "+this.getId() +" - "+
-		    	" Nom : "+this.getNom()+" - "+
-		    	" Prénom : "+this.getPrenom() +" - "+
-		    	" login : "+this.getLogin() +" - "+
-		    	" Mot de passe : "+this.getMotDePasse() +" - "/*+
-		    	" Adresse : "+this.getAdresse().toString()*/;
-		    		
-		
-	}
-
-
-	
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getMotDePasse() {
-		return motDePasse;
-	}
-
-	public void setMotDePasse(String motDePasse) {
-		this.motDePasse = motDePasse;
+	public String getTelephone() {
+		return telephone;
 	}
 
 	public Adresse getAdresse() {
 		return adresse;
 	}
 
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+	
+	public String toString() {
+		 return " ID  : "+this.getId() +" - "+
+		    	" Nom : "+this.getNom()+" - "+
+		    	" Prénom : "+this.getPrenom() +" - "+
+		    	" Telephone : "+this.getTelephone() +" - "/*+
+		    	" Adresse : "+this.getAdresse().toString()*/;
+	}
+	
 	
 
   
