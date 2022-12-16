@@ -18,13 +18,21 @@ public class Client extends Personne  {
 	
 	@Embedded
 	private Adresse adresse;
-//	@OneToOne
-//	@FilterJoinTable(name = "")
-//	@JoinColumn(name = "numCompteCourant")
+	@OneToOne(mappedBy = "client", cascade = {CascadeType.ALL})
+	//@JoinColumn(name = "numCompteCourant")
 	private CompteCourant cc;
 //	private CompteEpargne ce;
 	
 	public Client() {}
+	
+
+	public Client(String nom , String prenom,String  telephone, Adresse adresse, CompteCourant cc) {
+	super(nom, prenom);
+	this.telephone = telephone;
+	this.adresse = adresse;
+	this.cc = cc;
+}
+
 
 	public Client(Adresse adresse) {
 	    this.adresse = adresse;
@@ -35,7 +43,7 @@ public class Client extends Personne  {
 		super(nom,prenom);
 		this.telephone = telephone;
 		this.adresse = adresse;
-		this.cc= new CompteCourant();
+	
 		
 	}
 	

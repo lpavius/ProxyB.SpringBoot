@@ -1,5 +1,7 @@
 package org.formation.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 
 @Entity
@@ -9,8 +11,8 @@ public class CompteEpargne extends Compte{
 	
 	}
 
-	public CompteEpargne(double solde) {
-		super(solde);
+	public CompteEpargne(double solde, LocalDate date) {
+		super(solde, date);
 
 	}
 	

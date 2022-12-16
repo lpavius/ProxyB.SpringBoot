@@ -13,20 +13,18 @@ import jakarta.persistence.InheritanceType;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Compte {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long numeroCompte;
 	private double solde; 
 	private LocalDate date;
-	//private static long count = 1000;
+	
 	
 	public Compte() {
 		
 	}
 
-	public Compte(double solde) {
+	public Compte(double solde,LocalDate date) {
 		super();
-		//count++;
-		//this.numeroCompte = count;
 		this.solde = solde;
 		this.date = LocalDate.now();
 	}
