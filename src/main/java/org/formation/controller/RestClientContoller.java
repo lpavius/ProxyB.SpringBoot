@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.formation.entity.Client;
 import org.formation.repository.ClientRepository;
+import org.formation.service.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,32 +24,44 @@ public class RestClientContoller {
 
 	@Autowired
 	ClientRepository clientRepository;
+	
+	ClientServiceImpl clientServiceImpl;
+
+	public RestClientContoller(ClientServiceImpl clientServiceImpl) {
+	super();
+	this.clientServiceImpl = clientServiceImpl;
+}
 
 	@GetMapping
 	public List<Client> getClients() {
-		return clientRepository.findAll();
+//		return clientRepository.findAll();
+		return clientServiceImpl.listClient();
 	}
 
 	@PostMapping
 	public Client createClient(@RequestBody Client client) {
-		return clientRepository.save(client);
+//		return clientRepository.save(client);
+		return clientServiceImpl.createClient(client);
 	}
 
 	@PutMapping
 //	@CrossOrigin(origins = "*", methods = RequestMethod.PUT, allowedHeaders = "*")
 	public Client updateClient(@RequestBody Client client) {
-		return clientRepository.save(client);
+//		return clientRepository.save(client);
+		return clientServiceImpl.updateClient(client);
 
 	}
 
 	@DeleteMapping("/{id}")
 	public void deleteClient(@PathVariable("id") Long id) {
-		clientRepository.deleteById(id);
+//		clientRepository.deleteById(id);
+		clientServiceImpl.deleteClient(id);
 	}
 
 	@GetMapping("/{id}")
 	public Client getClient(@PathVariable("id") Long id) {
-		return clientRepository.findById(id).get();
+//		return clientRepository.findById(id).get();
+		return clientServiceImpl.readClient(id);
 
 	}
 
