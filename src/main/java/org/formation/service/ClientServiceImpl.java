@@ -1,38 +1,31 @@
 package org.formation.service;
 
 import java.time.LocalDate;
-
 import java.util.List;
 
 import org.formation.entity.Client;
 import org.formation.entity.CompteCourant;
+import org.formation.entity.CompteEpargne;
 import org.formation.repository.ClientRepository;
-import org.formation.repository.ICompteCourantRepository;
 import org.springframework.stereotype.Service;
 @Service
 public class ClientServiceImpl implements ClientService {
 	
 	private ClientRepository clientRepository;
-	private ICompteCourantRepository ccRepository;
 	
-	public ClientServiceImpl(ClientRepository clientRepository,ICompteCourantRepository compteCourantRepository ) {
+	public ClientServiceImpl(ClientRepository clientRepository) {
 		super();
 		this.clientRepository = clientRepository;
-		this.ccRepository = compteCourantRepository;
 	}
-	@Override
-	public CompteCourant addCcourant(CompteCourant cc , Client client) {
-		cc.setCient(client);
-		return ccRepository.save(cc);
-	}
-
+	
 	@Override
 	public Client createClient(Client client) {
 		
 		//LocalDate date = LocalDate.now();
-		CompteCourant cc = new CompteCourant(client, 100,LocalDate.now(), 1000d);
-		client.setCc(cc);
-		addCcourant(cc,client);
+//		CompteCourant cc = new CompteCourant(client, 500,LocalDate.now(), 1000d);
+		client.setCc(addCcourant(client));
+		client.setCe(addCptEpargne(client));
+//		cc.setClient(client);
 		return clientRepository.save(client);
 	}
 
@@ -56,7 +49,19 @@ public class ClientServiceImpl implements ClientService {
 		return clientRepository.findAll();
 	}
 
-	
+	@Override
+	public CompteCourant addCcourant(Client client) {
+		CompteCourant cc = new CompteCourant(500, LocalDate.now());
+		cc.setClient(client);
+		return cc;
+	}
+
+	@Override
+	public CompteEpargne addCptEpargne(Client client) {
+		CompteEpargne ce = new CompteEpargne(2000, LocalDate.now());
+		ce.setClient(client);
+		return ce;
+	}
 
 	
 }

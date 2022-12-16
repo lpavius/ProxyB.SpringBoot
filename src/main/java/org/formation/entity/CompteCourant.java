@@ -20,10 +20,9 @@ public class CompteCourant extends Compte {
 		
 	}
 
-	public CompteCourant( Client client, double solde,LocalDate date, double decouvert ) {
+	public CompteCourant(double solde,LocalDate date) {
 		super(solde, date);
-		this.decouvert = decouvert;
-		this.client = client;
+//		this.client = new Client();
 	}
 
 	public CompteCourant(Client client) {
@@ -39,11 +38,11 @@ public class CompteCourant extends Compte {
 		this.decouvert = decouvert;
 	}
 
-	public Client getCient() {
+	public Client getClient() {
 		return client;
 	}
 
-	public void setCient(Client client) {
+	public void setClient(Client client) {
 		this.client = client;
 	}
 	

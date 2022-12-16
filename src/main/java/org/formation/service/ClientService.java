@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.formation.entity.Client;
 import org.formation.entity.CompteCourant;
+import org.formation.entity.CompteEpargne;
 
 public interface ClientService {
 
@@ -12,5 +13,7 @@ public interface ClientService {
 	Client updateClient(Client client);
 	void deleteClient(Long id);
 	List<Client> listClient();
-	public CompteCourant addCcourant(CompteCourant cc, Client client);
+	public CompteCourant addCcourant(Client client);
+	public CompteEpargne addCptEpargne(Client client);
+
 }

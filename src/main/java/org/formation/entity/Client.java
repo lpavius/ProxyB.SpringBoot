@@ -1,17 +1,11 @@
- package org.formation.entity;
-
-import org.hibernate.annotations.FilterJoinTable;
+package org.formation.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
-
 @Entity
-
 public class Client extends Personne  {
 	
 	private String telephone;
@@ -21,39 +15,26 @@ public class Client extends Personne  {
 	@OneToOne(mappedBy = "client", cascade = {CascadeType.ALL})
 	//@JoinColumn(name = "numCompteCourant")
 	private CompteCourant cc;
-//	private CompteEpargne ce;
+	@OneToOne(mappedBy = "client", cascade = {CascadeType.ALL})
+	private CompteEpargne ce;
 	
 	public Client() {}
 	
-
 	public Client(String nom , String prenom,String  telephone, Adresse adresse, CompteCourant cc) {
-	super(nom, prenom);
-	this.telephone = telephone;
-	this.adresse = adresse;
-	this.cc = cc;
-}
-
+		super(nom, prenom);
+		this.telephone = telephone;
+		this.adresse = adresse;
+		this.cc = cc;
+	}
 
 	public Client(Adresse adresse) {
 	    this.adresse = adresse;
 	}
 	
-	
 	public Client(String nom, String prenom, String telephone, Adresse adresse) {
 		super(nom,prenom);
 		this.telephone = telephone;
-		this.adresse = adresse;
-	
-		
-	}
-	
-
-	public CompteCourant getCc() {
-		return cc;
-	}
-
-	public void setCc(CompteCourant cc) {
-		this.cc = cc;
+		this.adresse = adresse;	
 	}
 
 	public String getTelephone() {
@@ -72,15 +53,20 @@ public class Client extends Personne  {
 		this.adresse = adresse;
 	}
 	
-	public String toString() {
-		 return " ID  : "+this.getId() +" - "+
-		    	" Nom : "+this.getNom()+" - "+
-		    	" Prénom : "+this.getPrenom() +" - "+
-		    	" Telephone : "+this.getTelephone() +" - "/*+
-		    	" Adresse : "+this.getAdresse().toString()*/;
+	public CompteCourant getCc() {
+		return cc;
 	}
-	
-	
 
+	public void setCc(CompteCourant cc) {
+		this.cc = cc;
+	}
+
+	public CompteEpargne getCe() {
+		return ce;
+	}
+
+	public void setCe(CompteEpargne ce) {
+		this.ce = ce;
+	}
   
 }
