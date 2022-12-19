@@ -24,7 +24,7 @@ public class ClientServiceImpl implements ClientService {
 		//LocalDate date = LocalDate.now();
 //		CompteCourant cc = new CompteCourant(client, 500,LocalDate.now(), 1000d);
 		client.setCc(addCcourant(client));
-		client.setCe(addCptEpargne(client));
+		client.setCompteEp(addCptEpargne(client));
 //		cc.setClient(client);
 		return clientRepository.save(client);
 	}

@@ -8,7 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class CompteEpargne extends Compte{
+public class CompteEpargne extends Compte {
 	
 	private int interet = 3;
 	
@@ -40,5 +40,4 @@ public class CompteEpargne extends Compte{
 		this.client = client;
 	}
 	
-
 }

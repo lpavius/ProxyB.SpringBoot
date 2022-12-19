@@ -12,29 +12,37 @@ public class Client extends Personne  {
 	
 	@Embedded
 	private Adresse adresse;
+	
 	@OneToOne(mappedBy = "client", cascade = {CascadeType.ALL})
-	//@JoinColumn(name = "numCompteCourant")
 	private CompteCourant cc;
+	
 	@OneToOne(mappedBy = "client", cascade = {CascadeType.ALL})
-	private CompteEpargne ce;
+	private CompteEpargne compteEp;
 	
 	public Client() {}
 	
-	public Client(String nom , String prenom,String  telephone, Adresse adresse, CompteCourant cc) {
+	public Client(String nom , String prenom,String  telephone, Adresse adresse) {
 		super(nom, prenom);
 		this.telephone = telephone;
 		this.adresse = adresse;
+	}
+
+	public Client(String telephone, Adresse adresse, CompteCourant cc, CompteEpargne compteEp) {
+		super();
+		this.telephone = telephone;
+		this.adresse = adresse;
 		this.cc = cc;
+		this.compteEp = compteEp;
+	}
+
+	public Client(CompteCourant cc, CompteEpargne compteEp) {
+		super();
+		this.cc = cc;
+		this.compteEp = compteEp;
 	}
 
 	public Client(Adresse adresse) {
 	    this.adresse = adresse;
-	}
-	
-	public Client(String nom, String prenom, String telephone, Adresse adresse) {
-		super(nom,prenom);
-		this.telephone = telephone;
-		this.adresse = adresse;	
 	}
 
 	public String getTelephone() {
@@ -61,12 +69,13 @@ public class Client extends Personne  {
 		this.cc = cc;
 	}
 
-	public CompteEpargne getCe() {
-		return ce;
+	public CompteEpargne getCompteEp() {
+		return compteEp;
 	}
 
-	public void setCe(CompteEpargne ce) {
-		this.ce = ce;
+	public void setCompteEp(CompteEpargne compteEp) {
+		this.compteEp = compteEp;
 	}
+
   
 }

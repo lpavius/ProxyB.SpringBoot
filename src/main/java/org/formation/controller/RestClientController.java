@@ -5,6 +5,7 @@ import java.util.List;
 import org.formation.entity.Client;
 import org.formation.repository.ClientRepository;
 import org.formation.service.ClientServiceImpl;
+import org.formation.service.CompteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,18 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/clients")
-//@CrossOrigin(origins = {"http://localhost:4200"})
-public class RestClientContoller {
-
-	@Autowired
-	ClientRepository clientRepository;
+@CrossOrigin(origins = {"http://localhost:4200"})
+public class RestClientController {
 	
 	ClientServiceImpl clientServiceImpl;
+	CompteServiceImpl compteService;
 
-	public RestClientContoller(ClientServiceImpl clientServiceImpl) {
-	super();
-	this.clientServiceImpl = clientServiceImpl;
-}
+	
+	public RestClientController(ClientServiceImpl clientServiceImpl, CompteServiceImpl compteService) {
+		super();
+		this.clientServiceImpl = clientServiceImpl;
+		this.compteService = compteService;
+	}
+
 
 	@GetMapping
 	public List<Client> getClients() {
@@ -48,6 +50,7 @@ public class RestClientContoller {
 //	@CrossOrigin(origins = "*", methods = RequestMethod.PUT, allowedHeaders = "*")
 	public Client updateClient(@RequestBody Client client) {
 //		return clientRepository.save(client);
+		
 		return clientServiceImpl.updateClient(client);
 
 	}

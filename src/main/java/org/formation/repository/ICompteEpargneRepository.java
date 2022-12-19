@@ -4,5 +4,7 @@ import org.formation.entity.CompteEpargne;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ICompteEpargneRepository extends JpaRepository<CompteEpargne, Long> {
+	
+	CompteEpargne findByNumeroCompte(Long id);
 
 }

@@ -13,7 +13,7 @@ public interface ClientService {
 	Client updateClient(Client client);
 	void deleteClient(Long id);
 	List<Client> listClient();
-	public CompteCourant addCcourant(Client client);
-	public CompteEpargne addCptEpargne(Client client);
-
+	CompteCourant addCcourant(Client client);
+	CompteEpargne addCptEpargne(Client client);
+	
 }
