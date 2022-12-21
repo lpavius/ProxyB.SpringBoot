@@ -49,8 +49,6 @@ public class RestClientController {
 	@PutMapping
 //	@CrossOrigin(origins = "*", methods = RequestMethod.PUT, allowedHeaders = "*")
 	public Client updateClient(@RequestBody Client client) {
-//		return clientRepository.save(client);
-		
 		return clientServiceImpl.updateClient(client);
 
 	}
