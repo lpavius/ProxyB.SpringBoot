@@ -2,22 +2,28 @@ package org.formation.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Compte {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long numeroCompte;
-	private double solde; 
-	private LocalDate date;
+	private Long numeroCompte;
 	
+	private double solde;
+	
+	private LocalDate date;
 	
 	public Compte() {
 		
@@ -29,11 +35,11 @@ public class Compte {
 		this.date = LocalDate.now();
 	}
 
-	public long getNumeroCompte() {
+	public Long getNumeroCompte() {
 		return numeroCompte;
 	}
 
-	public void setNumeroCompte(long numeroCompte) {
+	public void setNumeroCompte(Long numeroCompte) {
 		this.numeroCompte = numeroCompte;
 	}
 
@@ -51,15 +57,7 @@ public class Compte {
 
 	public void setDate(LocalDate date) {
 		this.date = date;
-	}
-
-	@Override
-	public String toString() {
-		return "Compte [numeroCompte=" + numeroCompte + ", solde=" + solde + ", date=" + date + "]";
-	}
-	
-	
-	
+	}	
 
 }
 

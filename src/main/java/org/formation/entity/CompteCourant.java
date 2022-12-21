@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -14,6 +15,7 @@ public class CompteCourant extends Compte {
 	
 	@OneToOne
 	@JsonIgnore
+	@JoinColumn(name = "client_id", updatable = false)
 	private Client client ;
 	     
 	public CompteCourant() {
@@ -45,6 +47,8 @@ public class CompteCourant extends Compte {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+
+	
 	
 	
 

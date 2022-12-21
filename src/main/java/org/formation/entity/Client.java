@@ -77,5 +77,12 @@ public class Client extends Personne  {
 		this.compteEp = compteEp;
 	}
 
+	@Override
+	public String toString() {
+		return "Client [telephone= " + telephone + ", adresse= " + adresse + ", cc= " + this.getCc().getNumeroCompte() + ", compteEp= " + this.getCompteEp().getNumeroCompte()
+				+ "]";
+	}
+
+	
   
 }
