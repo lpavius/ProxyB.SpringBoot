@@ -13,7 +13,6 @@ public class CompteServiceImpl implements CompteService {
 	ICompteCourantRepository ccRepository;
 	ICompteEpargneRepository ceRepository;
 	
-	
 
 	public CompteServiceImpl(ICompteCourantRepository cc, ICompteEpargneRepository ce) {
 		super();
@@ -39,6 +38,28 @@ public class CompteServiceImpl implements CompteService {
 		CompteEpargne ce = getCopmteEpargne(client.getCompteEp().getNumeroCompte());
 		ce.setSolde(ce.getSolde() + montant);
 		ceRepository.save(ce);
+	}
+
+	@Override
+	public CompteCourant updateCcourant(CompteCourant courant) {
+		if(courant.getNumeroCompte() != null) {
+			courant.setSolde(courant.getSolde());
+			courant.setDate(courant.getDate());
+			courant.setNumeroCompte(courant.getNumeroCompte());
+			//compteRepository.save(compte);
+		}
+		return courant;
+	}
+
+	@Override
+	public CompteEpargne updateCEpargne(CompteEpargne epargne) {
+		if(epargne.getNumeroCompte() != null) {
+			epargne.setSolde(epargne.getSolde());
+			epargne.setDate(epargne.getDate());
+			epargne.setNumeroCompte(epargne.getNumeroCompte());
+			//compteRepository.save(compte);
+		}
+		return epargne;
 	}
 
 	

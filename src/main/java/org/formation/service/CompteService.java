@@ -9,5 +9,6 @@ public interface CompteService {
 	CompteCourant getCopmteCourant(long id);
 	void virement(Client client, double montant);
 	CompteEpargne getCopmteEpargne(long id);
-	
+	CompteCourant updateCcourant(CompteCourant courant);
+	CompteEpargne updateCEpargne(CompteEpargne epargne);
 }
